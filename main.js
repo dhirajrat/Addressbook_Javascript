@@ -120,10 +120,10 @@ class Addressbook{
                 let firstName = prompt("Enter FirstName: ");
                 let lastName = prompt("Enter LastName: ");
                 let city = prompt("Enter City: ");
-                let state = prompt("Enter State: ")
-                let zip = prompt("Enter zip: ")
-                let phone = prompt("Enter phone: ")
-                let email = prompt("Enter E-mail: ")
+                let state = prompt("Enter State: ");
+                let zip = prompt("Enter zip: ");
+                let phone = prompt("Enter phone: ");
+                let email = prompt("Enter E-mail: ");
 
                 contact.firstName = firstName;
                 contact.lastName = lastName;
@@ -153,7 +153,7 @@ class Addressbook{
         if(contactExist == true){
             this.addressbook = this.addressbook.filter(contact => {
                 contact.firstName != firstName;
-                console.log("Contact Deleted")
+                console.log("Contact Deleted");
             })
         }
         else{
@@ -162,12 +162,27 @@ class Addressbook{
     }
 
     countContactsInAB(){
-        count = 0;
+        let count = 0;
         this.addressbook.forEach( contact => {
             contact.toString();
             count++;
         });
-        console.log(count+" Contacts are there in this Addressbook")
+        console.log(count+" Contacts are there in this Addressbook");
+    }
+
+    searchByCityInAB(){
+        let city = prompt("Enter City Of Contact You Wanna Search ");
+
+        let count = 0;
+        console.log("The contact of your desired city are:");
+        this.addressbook.forEach(contact => {
+            if(contact.city === city){
+                count++;
+                console.log(contact.toString());
+            }
+        });
+
+        console.log(count+" number Of people Found From This city");
     }
 
 
@@ -180,7 +195,7 @@ let student = new Addressbook();
 
 let exit = false;
 while(exit == false){
-    let choice = parseInt(prompt("Enter Choice : "));
+    let choice = parseInt(prompt("Enter Choice : \n1.add Contact \n2.edit Contact \n3.deleteContact \n4.Show Addressbook \n5.Count Contacts In Addressbook \n6.search Contact by city name\n7.EXIT"));
     switch(choice){
         case 1:
             student.addContactInAB();
@@ -198,6 +213,9 @@ while(exit == false){
             student.countContactsInAB();
             break;
         case 6:
+            student.searchByCityInAB();
+            break;
+        case 7:
             exit = true;
             console.log("EXIT");
             break;
