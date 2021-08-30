@@ -90,8 +90,19 @@ class Addressbook{
         let zip = prompt("Enter zip: ");
         let phone = prompt("Enter phone: ");
         let email = prompt("Enter E-mail: ");
-        let contact = new Contact(firstName, lastName, city, state, zip, phone, email);
-        this.addressbook.push(contact);
+
+        let alreadyExist = false;
+        this.addressbook.forEach(contact => {
+            if(contact.firstName === firstName && contact.lastName === lastName){
+                console.log("Contact already Exist : Cannot add duplicate Entry");
+                alreadyExist = true;
+            }
+        });
+
+        if(alreadyExist == false){
+            let contact = new Contact(firstName, lastName, city, state, zip, phone, email);
+            this.addressbook.push(contact);
+        }
         
     }
 
