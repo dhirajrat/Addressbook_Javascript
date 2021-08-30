@@ -150,6 +150,15 @@ class Addressbook{
         }
     }
 
+    countContactsInAB(){
+        count = 0;
+        this.addressbook.forEach( contact => {
+            contact.toString();
+            count++;
+        });
+        console.log(count+" Contacts are there in this Addressbook")
+    }
+
 
 }
 
@@ -175,6 +184,9 @@ while(exit == false){
             student.showAddressbook();
             break;
         case 5:
+            student.countContactsInAB();
+            break;
+        case 6:
             exit = true;
             console.log("EXIT");
             break;
