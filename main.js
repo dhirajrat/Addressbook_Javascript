@@ -82,6 +82,7 @@ class Addressbook{
     }
 
     addContactInAB(){
+        console.log("**Add A Contact**");
         let firstName = prompt("Enter FirstName: ");
         let lastName = prompt("Enter LastName: ");
         let city = prompt("Enter City: ");
@@ -100,7 +101,8 @@ class Addressbook{
         });
     }
 
-    editContactInAddressbook(firstName){
+    editContactInAddressbook(){
+        let firstName = prompt("Enter FirstName Of Contact You Wanna Edit ");
         let contactFound = false;
         this.addressbook.forEach(contact => {
             if(contact.firstName === firstName){
@@ -129,8 +131,28 @@ class Addressbook{
         }
     }
 
+    deleteContactFromAddressbook(){
+        let firstName = prompt("Enter FirstName Of Contact You Wanna delete ");
+        let contactExist = false;
+        this.addressbook.forEach(contact => {
+            if(contact.firstName === firstName){
+                contactExist = true;
+            }
+        });
+        if(contactExist == true){
+            this.addressbook = this.addressbook.filter(contact => {
+                contact.firstName != firstName;
+                console.log("Contact Deleted")
+            })
+        }
+        else{
+            console.log("Contact not Found");
+        }
+    }
+
 
 }
+
 
 
 let student = new Addressbook();
@@ -141,18 +163,15 @@ while(exit == false){
     let choice = parseInt(prompt("Enter Choice : "));
     switch(choice){
         case 1:
-            console.log("Add A Contact");
             student.addContactInAB();
             break;
         case 2:
-            let firstName = prompt("Enter FirstName Of Contact You Wanna Edit ");
-            student.editContactInAddressbook(firstName);
+            student.editContactInAddressbook();
             break;
         case 3:
-
+            student.deleteContactFromAddressbook();
             break;
         case 4:
-            console.log("Show AddressBook");
             student.showAddressbook();
             break;
         case 5:
