@@ -85,10 +85,10 @@ class Addressbook{
         let firstName = prompt("Enter FirstName: ");
         let lastName = prompt("Enter LastName: ");
         let city = prompt("Enter City: ");
-        let state = prompt("Enter State: ")
-        let zip = prompt("Enter zip: ")
-        let phone = prompt("Enter phone: ")
-        let email = prompt("Enter E-mail: ")
+        let state = prompt("Enter State: ");
+        let zip = prompt("Enter zip: ");
+        let phone = prompt("Enter phone: ");
+        let email = prompt("Enter E-mail: ");
         let contact = new Contact(firstName, lastName, city, state, zip, phone, email);
         this.addressbook.push(contact);
         
@@ -100,13 +100,66 @@ class Addressbook{
         });
     }
 
+    editContactInAddressbook(firstName){
+        let contactFound = false;
+        this.addressbook.forEach(contact => {
+            if(contact.firstName === firstName){
+                let firstName = prompt("Enter FirstName: ");
+                let lastName = prompt("Enter LastName: ");
+                let city = prompt("Enter City: ");
+                let state = prompt("Enter State: ")
+                let zip = prompt("Enter zip: ")
+                let phone = prompt("Enter phone: ")
+                let email = prompt("Enter E-mail: ")
+
+                contact.firstName = firstName;
+                contact.lastName = lastName;
+                contact.city = city;
+                contact.state = state;
+                contact.zip = zip;
+                contact.phone = phone;
+                contact.email = email;
+
+                console.log("Contact Edited");
+                contactFound = true;
+            }
+        });
+        if(contactFound == false){
+            console.log("Contact Not Found");
+        }
+    }
+
 
 }
 
 
 let student = new Addressbook();
 
-//Adding Contact
-student.addContactInAB();
-student.showAddressbook();
 
+let exit = false;
+while(exit == false){
+    let choice = parseInt(prompt("Enter Choice : "));
+    switch(choice){
+        case 1:
+            console.log("Add A Contact");
+            student.addContactInAB();
+            break;
+        case 2:
+            let firstName = prompt("Enter FirstName Of Contact You Wanna Edit ");
+            student.editContactInAddressbook(firstName);
+            break;
+        case 3:
+
+            break;
+        case 4:
+            console.log("Show AddressBook");
+            student.showAddressbook();
+            break;
+        case 5:
+            exit = true;
+            console.log("EXIT");
+            break;
+        default:
+            console.log("Invalid Choice");
+    }
+}
