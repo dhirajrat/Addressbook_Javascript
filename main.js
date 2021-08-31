@@ -1,6 +1,6 @@
 const prompt = require("prompt-sync")();
 
-//UC1
+//UC1/
 class Contact{
 
     constructor(firstName, lastName, city, state, zip, phone, email){
